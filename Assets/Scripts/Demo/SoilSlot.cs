@@ -1,28 +1,30 @@
 using System.Collections;
-using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine;
 
 namespace Demo
 {
     public class SoilSlot : MonoBehaviour, IDropHandler
     {
-        public Image soilImage;
-        public Sprite sproutSprite;
-        public Sprite plantSprite;
+        [SerializeField] private Image soilImage;
+        
+        [Header("Timer")]
+        [SerializeField] private float growDelay;
+        [SerializeField] private GameObject timerGameObject;
+        [SerializeField] private Image timerImage;
     
-        public float growDelay = 3f;
-    
+        private Sprite _plantSprite;
+        private Sprite _sproutSprite;
+
         private bool _planted = false;
+        private bool _isGrowing = false;
+        private float _timerCount;
     
         private void Start()
         {
-            if (soilImage == null)
-            {
-                soilImage = GetComponent<Image>();
-            }
-            
             soilImage.gameObject.SetActive(false);
+            timerGameObject.SetActive(false);
         }
     
         public void OnDrop(PointerEventData eventData)
@@ -39,30 +41,44 @@ namespace Demo
             }
 
             _planted = true;
-            plantSprite = seed.PlantSprite;
+            _plantSprite = seed.PlantSprite;
+            _sproutSprite = seed.SproutSprite;
     
             // hide seed after planting
             seed.gameObject.SetActive(false);
     
             // change soil to sprout
-            soilImage.sprite = sproutSprite;
+            soilImage.sprite = _sproutSprite;
             soilImage.gameObject.SetActive(true);
     
             // start growth
             StartCoroutine(GrowPlant());
         }
-    
-        IEnumerator GrowPlant()
+
+        private void Update()
         {
+            if (_isGrowing)
+            {
+                _timerCount += Time.deltaTime;
+                timerImage.fillAmount = _timerCount / growDelay;
+            }
+        }
+
+        private IEnumerator GrowPlant()
+        {
+            _timerCount = 0f;
+            _isGrowing = true;
+            timerGameObject.SetActive(true);
             yield return new WaitForSeconds(growDelay);
-    
+            _isGrowing = false;
+            timerGameObject.SetActive(false);
+
             // final plant
-            soilImage.sprite = plantSprite;
-            var ratio = plantSprite.rect.height / plantSprite.rect.width;
+            soilImage.sprite = _plantSprite;
+            var ratio = _plantSprite.rect.height / _plantSprite.rect.width;
             var y = soilImage.rectTransform.sizeDelta.x * ratio;
             soilImage.rectTransform.sizeDelta = new Vector2(soilImage.rectTransform.sizeDelta.x, y) * 0.5f;
             soilImage.rectTransform.anchoredPosition = new Vector2(0, soilImage.rectTransform.sizeDelta.y * 0.5f + 20f);
         }
     }
-
 }

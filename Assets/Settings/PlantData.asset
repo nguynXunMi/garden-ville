@@ -13,27 +13,21 @@ MonoBehaviour:
   m_Name: PlantData
   m_EditorClassIdentifier: Assembly-CSharp::Garden.PlantData
   plants:
-  - plantSprite: {fileID: 21300000, guid: 8c854aa3930d6ce4fa5801032733238f, type: 3}
-    seedSprite: {fileID: 21300000, guid: 2c8815d31aaecf6418b40a19167463c9, type: 3}
-    plantName: Yellow
-    useOriginalSize: 0
-  - plantSprite: {fileID: 21300000, guid: 9dc513d9fc73d304e8484687167a28e1, type: 3}
-    seedSprite: {fileID: 21300000, guid: cc0366f4ee2c5314690b96f01ccd95de, type: 3}
-    plantName: Red
-    useOriginalSize: 0
-  - plantSprite: {fileID: 642588181, guid: 9a6e1686db898e648a4bbd0616f39065, type: 3}
-    seedSprite: {fileID: -1142157532, guid: 9a6e1686db898e648a4bbd0616f39065, type: 3}
-    plantName: Pumpkin 2
-    useOriginalSize: 1
-  - plantSprite: {fileID: 21300000, guid: b8f042d3ed32f264bacaf7bbf9db04d3, type: 3}
-    seedSprite: {fileID: 21300000, guid: 6b7f48c8cb16ae24cbf73c94e7e99f5b, type: 3}
-    plantName: Purple
-    useOriginalSize: 0
-  - plantSprite: {fileID: 1897994926, guid: 9a6e1686db898e648a4bbd0616f39065, type: 3}
-    seedSprite: {fileID: 2032843374, guid: 9a6e1686db898e648a4bbd0616f39065, type: 3}
-    plantName: Pumpkin
-    useOriginalSize: 1
-  - plantSprite: {fileID: 21300000, guid: eaa7ee89c667fc1459c05fc1f83ad358, type: 3}
-    seedSprite: {fileID: 21300000, guid: f00a39d26673fef47b132c968a7c6724, type: 3}
-    plantName: Orange
-    useOriginalSize: 0
+  - seedSprite: {fileID: 603026687, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    sproutSprite: {fileID: 1986843353, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    plantSprite: {fileID: 21300000, guid: 6b7f48c8cb16ae24cbf73c94e7e99f5b, type: 3}
+  - seedSprite: {fileID: -2031337095, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    sproutSprite: {fileID: -2089870931, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    plantSprite: {fileID: 21300000, guid: 8351b8dd05248214ba2a0af5a9cd9b91, type: 3}
+  - seedSprite: {fileID: 813975125, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    sproutSprite: {fileID: -1754083674, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    plantSprite: {fileID: 21300000, guid: 6c365f1ca9767454086e6e318b8b7bd0, type: 3}
+  - seedSprite: {fileID: 1544628253, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    sproutSprite: {fileID: 1244323341, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    plantSprite: {fileID: 1897994926, guid: 9a6e1686db898e648a4bbd0616f39065, type: 3}
+  - seedSprite: {fileID: 1959815276, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    sproutSprite: {fileID: -1818101727, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    plantSprite: {fileID: 21300000, guid: 84771471c6c66a3449f5d86a3bc5e424, type: 3}
+  - seedSprite: {fileID: 1959815276, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    sproutSprite: {fileID: -1818101727, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    plantSprite: {fileID: 21300000, guid: 2c8815d31aaecf6418b40a19167463c9, type: 3}

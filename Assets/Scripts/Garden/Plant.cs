@@ -6,12 +6,12 @@ namespace Garden
     [Serializable]
     public class Plant
     {
-        [SerializeField] private Sprite plantSprite;
         [SerializeField] private Sprite seedSprite;
-        [SerializeField] private string plantName;
+        [SerializeField] private Sprite sproutSprite;
+        [SerializeField] private Sprite plantSprite;
 
-        public Sprite PlantSprite => plantSprite;
         public Sprite SeedSprite => seedSprite;
-        public string PlantName => plantName;
+        public Sprite SproutSprite => sproutSprite;
+        public Sprite PlantSprite => plantSprite;
     }
 }
