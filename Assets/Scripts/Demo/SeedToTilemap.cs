@@ -1,15 +1,20 @@
+using Garden;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Demo
 {
     public class SeedToTilemap : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        private CanvasGroup canvasGroup;
-        private RectTransform rectTransform;
-        private Transform originalParent;
-        private Vector2 originalAnchoredPos;
+        [SerializeField] private CanvasGroup canvasGroup;
+        [SerializeField] private RectTransform rectTransform;
+        [SerializeField] private Transform originalParent;
+        [SerializeField] private Image image;
+
+        private Vector2 _originalAnchoredPos;
+        private Plant Data { get; set; }
 
         private void Awake()
         {
@@ -20,11 +25,18 @@ namespace Demo
                 canvasGroup = gameObject.AddComponent<CanvasGroup>();
             }
         }
+        
+        public void SetData(Plant data)
+        {
+            var seedSprite = data.SeedSprite;
+            Data = data;
+            image.sprite = seedSprite;
+        }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             originalParent = transform.parent;
-            originalAnchoredPos = rectTransform.anchoredPosition;
+            _originalAnchoredPos = rectTransform.anchoredPosition;
             transform.SetAsLastSibling();
             canvasGroup.blocksRaycasts = false; // allow world checks if UI raycasts used
         }
@@ -44,8 +56,7 @@ namespace Demo
             Vector3 worldPos = ScreenToTilemapWorld(eventData.position, SoilTilemap.Instance.Tilemap);
 
             // Try to plant using the SoilTilemap singleton
-            bool planted = SoilTilemap.Instance != null && SoilTilemap.Instance.TryPlantAt(worldPos);
-
+            bool planted = SoilTilemap.Instance != null && SoilTilemap.Instance.TryPlantAt(worldPos, Data);
             if (planted)
             {
                 // hide or destroy the seed icon (consumed)
@@ -55,14 +66,13 @@ namespace Demo
             {
                 // return to inventory slot
                 transform.SetParent(originalParent);
-                rectTransform.anchoredPosition = originalAnchoredPos;
+                rectTransform.anchoredPosition = _originalAnchoredPos;
             }
         }
         
         public static Vector3 ScreenToTilemapWorld(Vector2 screenPos, Tilemap tilemap)
         {
             float zDistance = Mathf.Abs(Camera.main.transform.position.z - tilemap.transform.position.z);
-
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(
                 new Vector3(screenPos.x, screenPos.y, zDistance)
             );

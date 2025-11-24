@@ -7,7 +7,8 @@ namespace Demo
     public class Garden : MonoBehaviour
     {
         [SerializeField] private PlantData plantData;
-        [SerializeField] private SeedDraggable seedPrefab;
+        // [SerializeField] private SeedDraggable seedPrefab;
+        [SerializeField] private SeedToTilemap seedPrefab;
         [SerializeField] private List<RectTransform> seedParents = new();
 
         private void Start()
