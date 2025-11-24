@@ -166,8 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demo.SoilTilemap
   soilTilemap: {fileID: 51658529}
-  sproutSprite: {fileID: -1840332615, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-  plantSprite: {fileID: 95461704, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
+  plantPrefab: {fileID: 4315206961198950207, guid: 873596d072e12ca4ab8ce43a1435e9a5, type: 3}
   growTime: 3
 --- !u!483693784 &51658528
 TilemapRenderer:
@@ -3830,6 +3829,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a25e6c8702846b5885e03027cb48cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demo.SeedTest
+  canvasGroup: {fileID: 0}
+  rectTransform: {fileID: 0}
+  originalParent: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &428861245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4537,8 +4540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demo.SoilTilemap
   soilTilemap: {fileID: 771100057}
-  sproutSprite: {fileID: -1840332615, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-  plantSprite: {fileID: 95461704, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
+  plantPrefab: {fileID: 0}
   growTime: 3
 --- !u!1 &894103931
 GameObject:
@@ -8047,8 +8049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demo.SoilTilemap
   soilTilemap: {fileID: 1270943676}
-  sproutSprite: {fileID: -1960916103, guid: 6e6759bc08130d541be4658aaac1fef8, type: 3}
-  plantSprite: {fileID: 1897994926, guid: 9a6e1686db898e648a4bbd0616f39065, type: 3}
+  plantPrefab: {fileID: 0}
   growTime: 3
 --- !u!1 &1301732829
 GameObject:
@@ -8238,6 +8239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a25e6c8702846b5885e03027cb48cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demo.SeedTest
+  canvasGroup: {fileID: 0}
+  rectTransform: {fileID: 0}
+  originalParent: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &1402633928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8414,6 +8419,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a25e6c8702846b5885e03027cb48cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demo.SeedTest
+  canvasGroup: {fileID: 0}
+  rectTransform: {fileID: 0}
+  originalParent: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &1587778051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10777,6 +10786,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a25e6c8702846b5885e03027cb48cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demo.SeedTest
+  canvasGroup: {fileID: 0}
+  rectTransform: {fileID: 0}
+  originalParent: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &1669228758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11065,6 +11078,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a25e6c8702846b5885e03027cb48cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demo.SeedTest
+  canvasGroup: {fileID: 0}
+  rectTransform: {fileID: 0}
+  originalParent: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &5264791556995870793
 MonoBehaviour:
   m_ObjectHideFlags: 0

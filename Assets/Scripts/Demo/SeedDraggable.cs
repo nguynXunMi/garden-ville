@@ -12,20 +12,25 @@ namespace Demo
         [SerializeField] private Image image;
         
         private Transform _originalParent;
+        private Vector2 _originalAnchoredPos;
+
         public Sprite PlantSprite { get; private set; }
         public Sprite SproutSprite { get; private set; }
+        public Sprite CollectibleSprite { get; private set; }
 
         public void SetData(Plant data)
         {
             var seedSprite = data.SeedSprite;
             PlantSprite = data.PlantSprite;
             SproutSprite = data.SproutSprite;
+            CollectibleSprite = data.CollectibleSprite;
             image.sprite = seedSprite;
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             _originalParent = transform.parent;
+            _originalAnchoredPos = rectTransform.anchoredPosition;
             canvasGroup.blocksRaycasts = false;
         }
 
@@ -38,7 +43,7 @@ namespace Demo
         {
             canvasGroup.blocksRaycasts = true;
             transform.SetParent(_originalParent);
-            rectTransform.anchoredPosition = Vector2.zero;
+            rectTransform.anchoredPosition = _originalAnchoredPos;
         }
     }
 }

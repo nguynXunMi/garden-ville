@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3985392089181563279}
   - component: {fileID: 53412433595723355}
   - component: {fileID: 803350316696260577}
+  - component: {fileID: 2465286278018977445}
   m_Layer: 5
   m_Name: Soil
   m_TagString: Untagged
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 12456219, guid: 9a6e1686db898e648a4bbd0616f39065, type: 3}
+  m_Sprite: {fileID: 795190000, guid: f004c208e19d76e4badb4df61e01156d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -165,10 +166,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e49822cdf14351b9a88de52eec25d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demo.SoilSlot
+  button: {fileID: 2465286278018977445}
   soilImage: {fileID: 3461756237813499246}
+  soilSprites:
+  - {fileID: 795190000, guid: f004c208e19d76e4badb4df61e01156d, type: 3}
+  - {fileID: 1785900934, guid: f004c208e19d76e4badb4df61e01156d, type: 3}
+  - {fileID: 792701398, guid: f004c208e19d76e4badb4df61e01156d, type: 3}
+  - {fileID: -1383153504, guid: f004c208e19d76e4badb4df61e01156d, type: 3}
   growDelay: 3
   timerGameObject: {fileID: 5352419714694367910}
   timerImage: {fileID: 8616140470207579472}
+--- !u!114 &2465286278018977445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417066508929451310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 3461756237813499246}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 803350316696260577}
+        m_TargetAssemblyTypeName: Demo.SoilSlot, Assembly-CSharp
+        m_MethodName: OnClickToCollect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4512942128462589005
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Garden;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
@@ -7,7 +9,9 @@ namespace Demo
 {
     public class SoilSlot : MonoBehaviour, IDropHandler
     {
+        [SerializeField] private Button button;
         [SerializeField] private Image soilImage;
+        [SerializeField] private Sprite[] soilSprites;
         
         [Header("Timer")]
         [SerializeField] private float growDelay;
@@ -16,15 +20,25 @@ namespace Demo
     
         private Sprite _plantSprite;
         private Sprite _sproutSprite;
+        private Sprite _collectibleSprite;
 
         private bool _planted = false;
         private bool _isGrowing = false;
+        private bool _isCollectable = false;
         private float _timerCount;
-    
+        private Vector2 _baseSizeDelta;
+
+        private void Awake()
+        {
+            soilImage.sprite = soilSprites[new System.Random().Next(soilSprites.Length)];
+            _baseSizeDelta = soilImage.rectTransform.sizeDelta;
+        }
+
         private void Start()
         {
             soilImage.gameObject.SetActive(false);
             timerGameObject.SetActive(false);
+            button.interactable = false;
         }
     
         public void OnDrop(PointerEventData eventData)
@@ -43,13 +57,16 @@ namespace Demo
             _planted = true;
             _plantSprite = seed.PlantSprite;
             _sproutSprite = seed.SproutSprite;
+            _collectibleSprite = seed.CollectibleSprite;
     
             // hide seed after planting
-            seed.gameObject.SetActive(false);
+            // seed.gameObject.SetActive(false);
     
             // change soil to sprout
+            SetSoilAlpha(1f);
             soilImage.sprite = _sproutSprite;
             soilImage.gameObject.SetActive(true);
+            AdjustImage(_sproutSprite, soilImage);
     
             // start growth
             StartCoroutine(GrowPlant());
@@ -74,11 +91,36 @@ namespace Demo
             timerGameObject.SetActive(false);
 
             // final plant
+            _isCollectable = true;
+            button.interactable = true;
+
             soilImage.sprite = _plantSprite;
-            var ratio = _plantSprite.rect.height / _plantSprite.rect.width;
-            var y = soilImage.rectTransform.sizeDelta.x * ratio;
-            soilImage.rectTransform.sizeDelta = new Vector2(soilImage.rectTransform.sizeDelta.x, y) * 0.5f;
-            soilImage.rectTransform.anchoredPosition = new Vector2(0, soilImage.rectTransform.sizeDelta.y * 0.5f + 20f);
+            AdjustImage(_plantSprite, soilImage);
+        }
+
+        public void OnClickToCollect()
+        {
+            Inventory.Instance.AddCollectedItem(_collectibleSprite);
+            soilImage.sprite = null;
+            SetSoilAlpha(0f);
+            button.interactable = false;
+            _planted = false;
+            _isCollectable = false;
+        }
+
+        private void SetSoilAlpha(float alpha)
+        {
+            var color = soilImage.color;
+            color.a = alpha;
+            soilImage.color = color;
+        }
+
+        private void AdjustImage(Sprite sprite, Image image)
+        {
+            var ratio = sprite.rect.height / sprite.rect.width;
+            var y = _baseSizeDelta.x * ratio;
+            image.rectTransform.sizeDelta = new Vector2(_baseSizeDelta.x, y);
+            image.rectTransform.anchoredPosition = new Vector2(0, image.rectTransform.sizeDelta.y * 0.5f + 20f);
         }
     }
 }
