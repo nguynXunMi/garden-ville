@@ -1,18 +1,23 @@
+using System.Collections;
+using UnityEngine.Tilemaps;
+using UnityEngine;
+
 namespace Demo
 {
-    using System.Collections;
-    using UnityEngine;
-    using UnityEngine.Tilemaps;
-
+    [RequireComponent(typeof(Tilemap))]
     public class SoilTilemap : MonoBehaviour
     {
         public static SoilTilemap Instance { get; private set; }
 
-        [Header("Tilemap & sprites")] public Tilemap soilTilemap; // assign in inspector (Tilemap component)
-        public Sprite sproutSprite; // world sprite for sprout
-        public Sprite plantSprite; // world sprite for grown plant
+        [Header("Tilemap & sprites")]
+        [SerializeField] private Tilemap soilTilemap; // assign in inspector (Tilemap component)
+        [SerializeField] private Sprite sproutSprite; // world sprite for sprout
+        [SerializeField] private Sprite plantSprite; // world sprite for grown plant
 
-        [Header("Growth")] public float growTime = 3f;
+        [Header("Growth")]
+        [SerializeField] private float growTime = 3f;
+
+        public Tilemap Tilemap => soilTilemap;
 
         private void Awake()
         {
