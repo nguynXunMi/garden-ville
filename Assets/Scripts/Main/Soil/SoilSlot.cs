@@ -1,11 +1,11 @@
-using System;
+using Main.Plant;
 using System.Collections;
-using Garden;
+using Obsolete;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
 
-namespace Demo
+namespace Main.Soil
 {
     public class SoilSlot : MonoBehaviour, IDropHandler
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Garden
+namespace Main.Plant
 {
     [CreateAssetMenu(menuName = "PlantData")]
     public class PlantData : ScriptableObject

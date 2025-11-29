@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Garden
+namespace Main
 {
     public class Inventory : MonoBehaviour
     {

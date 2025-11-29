@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine;
 
-namespace Demo
+namespace Main
 {
     public class Menu : MonoBehaviour
     {

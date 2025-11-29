@@ -1,9 +1,8 @@
-using Garden;
-using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine;
 
-namespace Demo
+namespace Main.Plant
 {
     public class SeedDraggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {

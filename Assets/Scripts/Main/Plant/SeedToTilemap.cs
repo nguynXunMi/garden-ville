@@ -1,18 +1,18 @@
-using Garden;
+using Main.Soil;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 
-namespace Demo
+namespace Main.Plant
 {
     public class SeedToTilemap : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField] private CanvasGroup canvasGroup;
         [SerializeField] private RectTransform rectTransform;
-        [SerializeField] private Transform originalParent;
         [SerializeField] private Image image;
 
+        private Transform _originalParent;
         private Vector2 _originalAnchoredPos;
         private Plant Data { get; set; }
 
@@ -35,7 +35,7 @@ namespace Demo
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            originalParent = transform.parent;
+            _originalParent = transform.parent;
             _originalAnchoredPos = rectTransform.anchoredPosition;
             transform.SetAsLastSibling();
             canvasGroup.blocksRaycasts = false; // allow world checks if UI raycasts used
@@ -60,12 +60,14 @@ namespace Demo
             if (planted)
             {
                 // hide or destroy the seed icon (consumed)
-                gameObject.SetActive(false);
+                // gameObject.SetActive(false);
+                transform.SetParent(_originalParent);
+                rectTransform.anchoredPosition = _originalAnchoredPos;
             }
             else
             {
                 // return to inventory slot
-                transform.SetParent(originalParent);
+                transform.SetParent(_originalParent);
                 rectTransform.anchoredPosition = _originalAnchoredPos;
             }
         }

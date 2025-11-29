@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using Demo;
-using Garden;
+using Main.Plant;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Garden
+namespace Main
 {
-    public class GardenOriginal : MonoBehaviour
+    public class Garden : MonoBehaviour
     {
         [SerializeField] private PlantData plantData;
-        [SerializeField] private SeedDraggable seedPrefab;
+        // [SerializeField] private SeedDraggable seedPrefab;
+        [SerializeField] private SeedToTilemap seedPrefab;
         [SerializeField] private List<RectTransform> seedParents = new();
 
         private void Start()

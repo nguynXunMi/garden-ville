@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Garden
+namespace Main
 {
     public class InventorySlot : MonoBehaviour
     {
