@@ -1,8 +1,9 @@
+using Main.Plant;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine;
 
-namespace Main.Plant
+namespace Obsolete
 {
     public class SeedDraggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {

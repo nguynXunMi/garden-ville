@@ -1,11 +1,11 @@
-using Main.Plant;
 using System.Collections;
-using Obsolete;
+using Main;
+using Main.Plant;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine;
 
-namespace Main.Soil
+namespace Obsolete
 {
     public class SoilSlot : MonoBehaviour, IDropHandler
     {
@@ -26,6 +26,7 @@ namespace Main.Soil
         private bool _isGrowing = false;
         private bool _isCollectable = false;
         private float _timerCount;
+        private float _sproutDuration;
         private Vector2 _baseSizeDelta;
 
         private void Awake()
@@ -100,7 +101,8 @@ namespace Main.Soil
 
         public void OnClickToCollect()
         {
-            Inventory.Instance.AddCollectedItem(_collectibleSprite);
+            // Obsolete
+            // Inventory.Instance.AddCollectedItem(_collectibleSprite);
             soilImage.sprite = null;
             SetSoilAlpha(0f);
             button.interactable = false;

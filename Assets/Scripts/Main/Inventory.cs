@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Main
@@ -7,11 +9,20 @@ namespace Main
     {
         [SerializeField] private RectTransform itemParent;
         [SerializeField] private InventorySlot collectedImagePrefab;
+        [SerializeField] private TMP_Text goldText;
 
         public static Inventory Instance;
 
-        private Dictionary<string, int> CollectedDictionary { get; } = new();
-        private List<InventorySlot> Slots { get; } = new();
+        [SerializeField] private Dictionary<string, int> CollectedDictionary = new();
+        [SerializeField] private List<InventorySlot> Slots = new();
+
+        private int PlayerGold { get; set; }
+
+        private void SetGold(int gold)
+        {
+            PlayerGold = gold;
+            goldText.text = $"{gold}";
+        }
 
         private void Awake()
         {
@@ -24,16 +35,32 @@ namespace Main
             Instance = this;
         }
 
-        public void AddCollectedItem(Sprite sprite)
+        private void Start()
         {
-            if (CollectedDictionary.ContainsKey(sprite.name))
+            SetGold(0);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                CollectedDictionary[sprite.name] += 1;
+                foreach (var (key, value) in CollectedDictionary)
+                {
+                    UnityEngine.Debug.Log($"{key}: {value}");
+                }
+            }
+        }
+
+        public void AddCollectedItem(string slotName, int sellValue, Sprite sprite)
+        {
+            if (CollectedDictionary.ContainsKey(slotName))
+            {
+                CollectedDictionary[slotName] += 1;
                 foreach (var slot in Slots)
                 {
-                    if (string.Equals(slot.SlotName, sprite.name))
+                    if (string.Equals(slot.SlotName, slotName))
                     {
-                        slot.SetText($"{CollectedDictionary[sprite.name]}");
+                        slot.SetText($"{CollectedDictionary[slotName]}");
                     }
                 }
             }
@@ -41,10 +68,22 @@ namespace Main
             {
                 var slot = Instantiate(collectedImagePrefab, itemParent);
                 Slots.Add(slot);
-                slot.SetImage(sprite);
+                slot.SetData(slotName, sellValue, sprite);
                 slot.SetText("1");
-                CollectedDictionary[sprite.name] = 1;
+                CollectedDictionary[slotName] = 1;
             }
+        }
+
+        public void SellItem(string slotName, int sellValue)
+        {
+            CollectedDictionary.Remove(slotName);
+            var slot = Slots.Find(slot => string.Equals(slot.SlotName, slotName));
+            if (slot != null)
+            {
+                Slots.Remove(slot);
+            }
+
+            SetGold(PlayerGold + sellValue);
         }
     }
 }

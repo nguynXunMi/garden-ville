@@ -13,27 +13,51 @@ MonoBehaviour:
   m_Name: PlantData
   m_EditorClassIdentifier: Assembly-CSharp::Garden.PlantData
   plants:
-  - seedSprite: {fileID: 603026687, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
-    sproutSprite: {fileID: 2099778849, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-    plantSprite: {fileID: 1269959521, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-    collectibleSprite: {fileID: -132988634, guid: f851ba95ec0720b44bfd5bc6a796d6a9, type: 3}
-  - seedSprite: {fileID: -2031337095, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
-    sproutSprite: {fileID: -907236085, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-    plantSprite: {fileID: 1135584777, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-    collectibleSprite: {fileID: 1964496082, guid: f851ba95ec0720b44bfd5bc6a796d6a9, type: 3}
-  - seedSprite: {fileID: 813975125, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+  - name: Apple
+    sproutDuration: 3
+    plantType: 0
+    sellValue: 200
+    seedSprite: {fileID: 603026687, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    sproutSprite: {fileID: -1258665697, guid: 03cccff7b499536468c40fa71f44df16, type: 3}
+    plantSprite: {fileID: 1063900817, guid: 03cccff7b499536468c40fa71f44df16, type: 3}
+    collectibleSprite: {fileID: 21300000, guid: 22320b08545bac142ad700c2d0661996, type: 3}
+  - name: Orange
+    sproutDuration: 3
+    plantType: 0
+    sellValue: 50
+    seedSprite: {fileID: -2031337095, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    sproutSprite: {fileID: 1124553772, guid: 03cccff7b499536468c40fa71f44df16, type: 3}
+    plantSprite: {fileID: -958888172, guid: 03cccff7b499536468c40fa71f44df16, type: 3}
+    collectibleSprite: {fileID: 21300000, guid: 3ef83c91b40af8143b00446cfef40a4f, type: 3}
+  - name: Watermelon
+    sproutDuration: 3
+    plantType: 1
+    sellValue: 100
+    seedSprite: {fileID: 813975125, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
     sproutSprite: {fileID: -726567787, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
     plantSprite: {fileID: 1377124177, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-    collectibleSprite: {fileID: 2096605733, guid: f851ba95ec0720b44bfd5bc6a796d6a9, type: 3}
-  - seedSprite: {fileID: 1544628253, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
-    sproutSprite: {fileID: -1670758063, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-    plantSprite: {fileID: -1801535370, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-    collectibleSprite: {fileID: 637252974, guid: f851ba95ec0720b44bfd5bc6a796d6a9, type: 3}
-  - seedSprite: {fileID: 1959815276, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
-    sproutSprite: {fileID: -429096524, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-    plantSprite: {fileID: 4572750, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-    collectibleSprite: {fileID: -1613435149, guid: f851ba95ec0720b44bfd5bc6a796d6a9, type: 3}
-  - seedSprite: {fileID: 1959815276, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    collectibleSprite: {fileID: 21300000, guid: 7490fa732b98bd147a89a39a068dc35a, type: 3}
+  - name: Coconut
+    sproutDuration: 3
+    plantType: 0
+    sellValue: 80
+    seedSprite: {fileID: 1544628253, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    sproutSprite: {fileID: -1011745121, guid: 03cccff7b499536468c40fa71f44df16, type: 3}
+    plantSprite: {fileID: -2052603561, guid: 03cccff7b499536468c40fa71f44df16, type: 3}
+    collectibleSprite: {fileID: 21300000, guid: fe8c20d1c2f11294b9a1f9d61e27a938, type: 3}
+  - name: Banana
+    sproutDuration: 3
+    plantType: 0
+    sellValue: 60
+    seedSprite: {fileID: 1959815276, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
+    sproutSprite: {fileID: -1848309666, guid: 03cccff7b499536468c40fa71f44df16, type: 3}
+    plantSprite: {fileID: 832872524, guid: 03cccff7b499536468c40fa71f44df16, type: 3}
+    collectibleSprite: {fileID: 21300000, guid: 328781d830dcad7449bf32ed59ba52a4, type: 3}
+  - name: Blackberry
+    sproutDuration: 3
+    plantType: 1
+    sellValue: 90
+    seedSprite: {fileID: 1959815276, guid: 17c4bfb253c19de418821642a1b04519, type: 3}
     sproutSprite: {fileID: -1368008327, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
     plantSprite: {fileID: 332662211, guid: fcb8b0a64bbdb214fa652de95ce42497, type: 3}
-    collectibleSprite: {fileID: 1576621828, guid: f851ba95ec0720b44bfd5bc6a796d6a9, type: 3}
+    collectibleSprite: {fileID: 21300000, guid: 95f2926d881eba442aa1db2c3d68fc83, type: 3}

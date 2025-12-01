@@ -1,6 +1,7 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using System;
+using TMPro;
 using UnityEngine.UI;
+using UnityEngine;
 
 namespace Main
 {
@@ -9,17 +10,42 @@ namespace Main
         [SerializeField] private Image image;
         [SerializeField] private TMP_Text counterText;
         
-        public string SlotName => image.sprite?.name ?? string.Empty;
+        [Header("Sell")]
+        [SerializeField] private Button sellButton;
+        [SerializeField] private TMP_Text sellButtonText;
+        
         private Vector2 _baseSizeDelta;
+        private int _sellValue;
+
+        public string SlotName { get; private set; }
 
         private void Awake()
         {
             _baseSizeDelta = image.rectTransform.sizeDelta;
+            sellButton.onClick.AddListener(OnClickSellButton);
+        }
+
+        private void OnDestroy()
+        {
+            sellButton.onClick.RemoveListener(OnClickSellButton);
+        }
+
+        private void OnClickSellButton()
+        {
+            Inventory.Instance.SellItem(SlotName, _sellValue);
+            Destroy(gameObject);
+        }
+
+        public void SetData(string slotName, int sellValue, Sprite sprite)
+        {
+            SlotName = slotName;
+            _sellValue = sellValue;
+            sellButtonText.text = $"{_sellValue}";
+            image.sprite = sprite;
         }
 
         public void SetImage(Sprite sprite)
         {
-            image.sprite = sprite;
             // image.SetNativeSize();
             // image.rectTransform.sizeDelta *= 2;
             // image.rectTransform.anchoredPosition += new Vector2(0f, 0f);

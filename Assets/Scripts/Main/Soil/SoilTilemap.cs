@@ -11,7 +11,7 @@ namespace Main.Soil
         public static SoilTilemap Instance { get; private set; }
 
         [SerializeField] private Camera mainCamera;
-        [SerializeField] private Tilemap soilTilemap; // assign in inspector (Tilemap component)
+        [SerializeField] private Tilemap soilTilemap;
         [SerializeField] private PlantObject plantPrefab;
 
         [Header("Growth")]
@@ -123,7 +123,7 @@ namespace Main.Soil
 
             Vector3 center = soilTilemap.GetCellCenterWorld(cell);
             var plantObject = Instantiate(plantPrefab, center, Quaternion.identity);
-            plantObject.SetData(data, cell, mainCamera);
+            plantObject.SetData(data, cell.y, cell, mainCamera);
             plantObject.Harvested += OnHarvested;
             SetCellState(cell, CellState.Unplantable);
         }
