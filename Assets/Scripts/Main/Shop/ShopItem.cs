@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Main.Shop
@@ -12,14 +13,49 @@ namespace Main.Shop
         [SerializeField] private TMP_Text priceText;
         [SerializeField] private Image itemImage;
         
-        private bool _isPurchased;
-        private int _itemId;
+        public bool IsPurchased { get; private set; }
+        public int ItemId { get; private set; }
+        private int _price;
+        private Plant.Plant _plantData;
 
-        public void SetData()
+        public void SetData(ShopItemData data)
         {
-            
+            if (data == null)
+            {
+                return;
+            }
+
+            ItemId = data.Id;
+            _price = data.Price;
+            _plantData = data.Plant;
+            itemImage.sprite = data.Sprite;
+            priceText.text = $"{_price}";
         }
 
+        public void UpdateStatus(int gold)
+        {
+            if (IsPurchased)
+            {
+                SetItemPurchased();
+                return;
+            }
+            
+            if (_price > gold)
+            {
+                SetItemUnpurchasable();
+            }
+            else
+            {
+                SetItemPurchasable();
+            }
+        }
+
+        private void OnPurchased()
+        {
+            IsPurchased = true;
+            SetItemPurchased();
+        }
+        
         private void SetItemUnpurchasable()
         {
             lockCanvasGroup.alpha = 0.5f;
@@ -36,7 +72,7 @@ namespace Main.Shop
 
         private void SetItemPurchased()
         {
-            lockCanvasGroup.alpha = 1f;
+            lockCanvasGroup.alpha = 0.75f;
             lockCanvasGroup.interactable = true;
             lockCanvasGroup.blocksRaycasts = true;
         }
@@ -53,7 +89,10 @@ namespace Main.Shop
 
         private void OnClickShopItem()
         {
+            Shop.Instance.PurchaseItem(ItemId, _price);
             
+            // TODO: Add proper callback event to invoke when purchase is made successful
+            OnPurchased();
         }
     }
 }

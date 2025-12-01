@@ -16,7 +16,7 @@ namespace Main
         [SerializeField] private Dictionary<string, int> CollectedDictionary = new();
         [SerializeField] private List<InventorySlot> Slots = new();
 
-        private int PlayerGold { get; set; }
+        public int PlayerGold { get; private set; }
 
         private void SetGold(int gold)
         {
@@ -44,10 +44,7 @@ namespace Main
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                foreach (var (key, value) in CollectedDictionary)
-                {
-                    UnityEngine.Debug.Log($"{key}: {value}");
-                }
+                SetGold(PlayerGold + 1000);
             }
         }
 
@@ -76,6 +73,7 @@ namespace Main
 
         public void SellItem(string slotName, int sellValue)
         {
+            var quantity = CollectedDictionary[slotName];
             CollectedDictionary.Remove(slotName);
             var slot = Slots.Find(slot => string.Equals(slot.SlotName, slotName));
             if (slot != null)
@@ -83,7 +81,9 @@ namespace Main
                 Slots.Remove(slot);
             }
 
-            SetGold(PlayerGold + sellValue);
+            SetGold(PlayerGold + sellValue * quantity);
         }
+
+        public void OnPurchased(int price) => SetGold(PlayerGold - price);
     }
 }
