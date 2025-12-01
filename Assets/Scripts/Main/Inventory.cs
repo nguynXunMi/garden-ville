@@ -40,14 +40,6 @@ namespace Main
             SetGold(0);
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                SetGold(PlayerGold + 1000);
-            }
-        }
-
         public void AddCollectedItem(string slotName, int sellValue, Sprite sprite)
         {
             if (CollectedDictionary.ContainsKey(slotName))
