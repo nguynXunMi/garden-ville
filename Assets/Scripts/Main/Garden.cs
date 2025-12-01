@@ -1,3 +1,4 @@
+using System;
 using Main.Plant;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,26 @@ namespace Main
         [SerializeField] private SeedToTilemap seedPrefab;
         [SerializeField] private List<RectTransform> seedParents = new();
 
+        // TODO: Move pause menu logic to somewhere else
+        [SerializeField] private GameObject pauseMenu;
+
+        // TODO: Move pause menu logic to somewhere else
+        public void BackToMenuScene()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+        
         private void Start()
         {
             LoadData();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pauseMenu.SetActive(!pauseMenu.activeSelf);
+            }
         }
 
         private void LoadData()
