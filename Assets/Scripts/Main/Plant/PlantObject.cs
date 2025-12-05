@@ -47,7 +47,8 @@ namespace Main.Plant
             _timerCount = 0f;
             _isGrowing = true;
             spriteRenderer.sortingOrder -= index;
-            StartCoroutine(GrowCoroutine());
+            // StartCoroutine(GrowCoroutine());
+            StartCoroutine(GrowCoroutine(data.PlantSprites));
         }
 
         private IEnumerator GrowCoroutine()
@@ -68,6 +69,40 @@ namespace Main.Plant
             modelTransform.localScale = Vector3.one * _growScale;
             spriteRenderer.sprite = Data.PlantSprite;
             _isHarvestable = true;
+        }
+
+        private IEnumerator GrowCoroutine(Sprite[] sprites)
+        {
+            if (sprites is not { Length: > 0 })
+            {
+                StartCoroutine(GrowCoroutine());
+                yield break;
+            }
+
+            var duration = _sproutDuration / sprites.Length;
+            for (var i = 0; i < sprites.Length; i++)
+            {
+                yield return new WaitForSeconds(duration);
+                var isHarvestable = i == sprites.Length - 1;
+                if (isHarvestable)
+                {
+                    _isGrowing = false;
+                    progressBar.gameObject.SetActive(false);
+                }
+                Grow(sprites[i], isHarvestable);
+            }
+        }
+
+        private void Grow(Sprite plantSprite, bool isHarvestable)
+        {
+            if (spriteRenderer == null || plantSprite == null)
+            {
+                return;
+            }
+
+            modelTransform.localScale = Vector3.one * _growScale;
+            spriteRenderer.sprite = plantSprite;
+            _isHarvestable = isHarvestable;
         }
 
         private void OnMouseDown()

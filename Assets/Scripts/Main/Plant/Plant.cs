@@ -19,6 +19,7 @@ namespace Main.Plant
         [SerializeField] private Sprite seedSprite;
         [SerializeField] private Sprite sproutSprite;
         [SerializeField] private Sprite plantSprite;
+        [SerializeField] private Sprite[] plantSprites;
         [SerializeField] private Sprite collectibleSprite;
 
         public string Name => name;
@@ -28,6 +29,7 @@ namespace Main.Plant
         public Sprite SeedSprite => seedSprite;
         public Sprite SproutSprite => sproutSprite;
         public Sprite PlantSprite => plantSprite;
+        public Sprite[] PlantSprites => plantSprites;
         public Sprite CollectibleSprite => collectibleSprite;
     }
 }
