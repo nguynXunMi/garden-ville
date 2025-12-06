@@ -11,6 +11,8 @@ namespace Main.Controllers
         [Header("SFX")]
         [SerializeField] private AudioClip sowSeedAudioClip;
         [SerializeField] private AudioClip[] clickAudioClips;
+        [SerializeField] private AudioClip[] harvestAudioClips;
+        [SerializeField] private AudioClip sellAudioClip;
 
         [Header("BGM")]
         [SerializeField] private AudioClip mainBGMAudioClip;
@@ -41,6 +43,9 @@ namespace Main.Controllers
             bgmAudioSource.loop = true;
         }
 
+        private void PlayRandomSfx(AudioClip[] clips)
+            => PlaySFX(clips[new System.Random().Next(clips.Length)]);
+
         public void SetVolumeSfx(float value) => sfxAudioSource.volume = value;
         public void SetVolumeBgm(float value) => bgmAudioSource.volume = value;
         public float GetVolumeSfx() => sfxAudioSource.volume;
@@ -49,6 +54,8 @@ namespace Main.Controllers
         public void PlayMenuBGM() => PlayBGM(menuBGMAudioClip);
         public void PlayMainBGM() => PlayBGM(mainBGMAudioClip);
         public void PlaySowSeedSfx() => PlaySFX(sowSeedAudioClip);
-        public void PlayClickSfx() => PlaySFX(clickAudioClips[new System.Random().Next(clickAudioClips.Length)]);
+        public void PlayClickSfx() => PlayRandomSfx(clickAudioClips);
+        public void PlayHarvestSfx() => PlayRandomSfx(harvestAudioClips);
+        public void PlaySellSfx() => PlaySFX(sellAudioClip);
     }
 }

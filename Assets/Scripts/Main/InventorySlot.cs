@@ -1,4 +1,5 @@
 ﻿using System;
+using Main.Controllers;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
@@ -32,6 +33,7 @@ namespace Main
 
         private void OnClickSellButton()
         {
+            AudioController.Instance?.PlaySellSfx();
             Inventory.Instance.SellItem(SlotName, _sellValue);
             Destroy(gameObject);
         }

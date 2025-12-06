@@ -1583,6 +1583,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d9f43840caf98ec47a430d38506a3f93, type: 3}
   - {fileID: 8300000, guid: 165e1aab4f877db4f98dc67c9eab853f, type: 3}
   - {fileID: 8300000, guid: 1bc4f18b19169f044bf4b374e62975ba, type: 3}
+  harvestAudioClips:
+  - {fileID: 8300000, guid: 3c57b5cd55a62a143a4f11acf77c7bb6, type: 3}
+  - {fileID: 8300000, guid: 3c1531b0e8f31c7439e55f83b1629378, type: 3}
+  sellAudioClip: {fileID: 8300000, guid: 74206a8bddf312e42b802d12785e4037, type: 3}
   mainBGMAudioClip: {fileID: 8300000, guid: d87f8de68511cf14cb96fbd58a361881, type: 3}
   menuBGMAudioClip: {fileID: 8300000, guid: 5f619ccdb5e0e2a43b4a79ab165e3fff, type: 3}
 --- !u!1 &1092377424

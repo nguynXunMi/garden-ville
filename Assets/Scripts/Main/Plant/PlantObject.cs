@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System;
+using Main.Controllers;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -113,6 +114,7 @@ namespace Main.Plant
                 return;
             }
 
+            AudioController.Instance?.PlayHarvestSfx();
             Inventory.Instance.AddCollectedItem(Data.Name, Data.SellValue, Data.CollectibleSprite);
             Harvested?.Invoke(Position);
             Destroy(gameObject);
