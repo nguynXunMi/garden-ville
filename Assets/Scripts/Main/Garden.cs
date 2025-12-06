@@ -1,6 +1,7 @@
 using System;
 using Main.Plant;
 using System.Collections.Generic;
+using Main.Controllers;
 using UnityEngine;
 
 namespace Main
@@ -23,6 +24,7 @@ namespace Main
         
         private void Start()
         {
+            AudioController.Instance?.PlayMainBGM();
             LoadData();
         }
 

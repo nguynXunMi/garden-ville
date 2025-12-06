@@ -1,3 +1,4 @@
+using Main.Controllers;
 using Main.Soil;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
@@ -59,17 +60,12 @@ namespace Main.Plant
             bool planted = SoilTilemap.Instance != null && SoilTilemap.Instance.TryPlantAt(worldPos, Data);
             if (planted)
             {
-                // hide or destroy the seed icon (consumed)
-                // gameObject.SetActive(false);
-                transform.SetParent(_originalParent);
-                rectTransform.anchoredPosition = _originalAnchoredPos;
+                AudioController.Instance?.PlaySowSeedSfx();
             }
-            else
-            {
-                // return to inventory slot
-                transform.SetParent(_originalParent);
-                rectTransform.anchoredPosition = _originalAnchoredPos;
-            }
+
+            // return to inventory slot
+            transform.SetParent(_originalParent);
+            rectTransform.anchoredPosition = _originalAnchoredPos;
         }
         
         public static Vector3 ScreenToTilemapWorld(Vector2 screenPos, Tilemap tilemap)
